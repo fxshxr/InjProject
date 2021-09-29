@@ -13,52 +13,55 @@
     
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-            <a class="navbar-brand" href="{%url 'home'%}">{{title}}</a>
+            <a class="navbar-brand" href="{%url 'applied'%}">{{title}}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="{%url 'add-bookings'%}">Добавление бронирования</a>
                   
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{%url 'applied'%}">Подтвержденные бронирования</a>
+                  <a class="nav-link" href="{%url 'home'%}">Список бронирований</a>
                   
                 </li>
                 <li>
                     <a class="nav-link" href="/admin">Админка</a>
                 </li>
-                
                </ul>
             
             </div>
         </div>
           </nav>
           <div class="container mt-3">
-             
-                <div class="row">
-                    
-                    
-                    {% for item in bookings %}
-                    <div class="card mb-3" style="width: 18rem; margin-left: 10px; padding: 0;">
-                        
-                                
-                    <div class="card-body text-white {% if item.is_published %} bg-success  {% else %} bg-danger {% endif %} ">
-                        <h5>Столик: {{item.title}}</h5>
-                        <p class="card-text">Посетитель: {{item.content}}</p>
-                        <p class="card-text">Дата посещения: {{item.updated_at|date:"Y-m-d H:m"}}</p>
-                        <p class="card-text">{% if item.is_published %} Бронь подтверждена! {% else %} Бронь не подтверждена! {% endif %}</p>
-                    </div>
+            <div class="row">
 
-                    
-                </div>
-                {% endfor %}
-                
-                
-              </div>
+          
+
+          
+            {% for item in bookings %}
+            
+            
+              {% if item.is_published %}    
+              <div class="card mb-3" style="width: 18rem; margin-left: 10px; padding: 0;">
+            <div class="card-body text-white bg-success ">
+                <h5>Столик: {{item.title}}</h5>
+                <p class="card-text">Посетитель: {{item.content}}</p>
+                <p class="card-text">Дата посещения: {{item.updated_at|date:"Y-m-d H:m"}}</p>
+               
+            </div>
+            
+            
+            
+            
+        </div>
+        {% endif %}
+        {% endfor %}
+          
+          
           </div>
       
     

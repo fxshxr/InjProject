@@ -12,7 +12,7 @@ from import_export.widgets import ForeignKeyWidget
 class BookingsAdmin(ImportExportActionModelAdmin):
     list_display = ('id', 'title','content' ,'created_at', 'updated_at','is_published')
     list_display_links =('id', 'title','content','updated_at')
-    search_fields =('title','content')
+    search_fields =('id','title','content')
 
 
    

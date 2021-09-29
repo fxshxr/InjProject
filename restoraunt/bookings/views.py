@@ -23,5 +23,8 @@ def add_bookings(request):
 
     return render(request,'bookings/add_bookings.html', {'form':form , 'title':'Список Бронирований'})
  
+def applied(request):
+    booking = Bookings.objects.all()
+    return render(request,'bookings/applied.html', {'bookings':booking,'title':'Подтвержденные бронирования'})
 
 

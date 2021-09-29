@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('bookings.urls')),
 
 
+
 ]
